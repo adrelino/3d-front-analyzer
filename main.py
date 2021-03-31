@@ -8,14 +8,16 @@ from analyzer import Analyzer
 
 def main(opts):
     # 3D-Front
-    analyzer = Analyzer(is_debug=False)
-    analyzer.parse_houses(Path(opts.house_path), num_scenes=None)
-    analyzer.parse_shapes(Path(opts.shape_path))
-    analyzer.parse_shape_categories(Path("resources/category_mapping.json"))
-    analyzer.collect_available_scene_furniture()
+    analyzer = Analyzer(is_debug=opts.debug)
+    analyzer.parse_houses(Path(opts.house_path), num_scenes = (10 if opts.debug else None))
 
-    # shape_analysis(analyzer)
-    # scene_analysis(analyzer)
+    if opts.shape_path:
+        analyzer.parse_shapes(Path(opts.shape_path))
+        analyzer.parse_shape_categories(Path("resources/category_mapping.json"))
+        analyzer.collect_available_scene_furniture()
+        shape_analysis(analyzer)
+    
+    scene_analysis(analyzer)
     room_analysis(analyzer)
 
 
@@ -66,6 +68,17 @@ def scene_analysis(analyzer):
     headers = ["Type", "#rooms"]
     print(tabulate(entries, headers=headers, tablefmt="github"))
 
+    print("Number of rooms per scene")
+    by_room_number, uids = analyzer.get_rooms_per_scene()
+    entries = sorted([[k, v] for k, v in by_room_number.items()], key=lambda x: x[1], reverse=True)
+    headers = ["#rooms", "#scenes"]
+    print(tabulate(entries, headers=headers, tablefmt="github"))
+
+    for k in range(1,6):
+        with open('3d-front_{}.txt'.format(k), 'w') as f:
+            for item in uids[k]:
+                f.write("%s.json\n" % item)
+
 
 def room_analysis(analyzer):
     rooms_with_multiple_floors = analyzer.get_rooms_with_multiple_floors()
@@ -75,8 +88,12 @@ def room_analysis(analyzer):
 
 if __name__ == '__main__':
     parser = ArgumentParser()
-    parser.add_argument("--house-path", type=str)
-    parser.add_argument("--shape-path", type=str)
+    parser.add_argument("--house-path", type=str, default = "/home/adrian/datasets/3D-FRONT")
+    parser.add_argument("--shape-path", type=str) #, default = "/home/adrian/datasets/3D-FUTURE-model")
+    #https://stackoverflow.com/a/15008806
+    parser.add_argument('--debug', dest='debug', action='store_true')
+    parser.add_argument('--no-debug', dest='debug', action='store_false')
+    parser.set_defaults(debug=True)
     args = parser.parse_args()
 
     main(args)

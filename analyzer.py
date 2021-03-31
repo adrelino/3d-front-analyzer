@@ -145,6 +145,17 @@ class Analyzer:
 
         return by_room_type
 
+    def get_rooms_per_scene(self, non_empty: bool = False) -> Dict[str, int]:
+        by_room_size = defaultdict(lambda: 0)
+        by_room_size2 = defaultdict(lambda: [])
+
+        for scene in self.scenes.values():
+            k = len(scene.rooms)
+            by_room_size[k] += 1
+            by_room_size2[k].append(scene.uid)
+
+        return by_room_size, by_room_size2
+
     def get_room_types_for_scene_list(self, scene_list: str) -> Dict[str, int]:
         pass
 
