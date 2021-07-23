@@ -1,0 +1,87 @@
+(cv) adrian@S7IXBS-new:~/git/3d-front-analyzer$ python main.py --no-debug
+Parsing scenes: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6813/6813 [00:36<00:00, 188.67it/s]
+All rooms
+| Type             |   #rooms |
+|------------------|----------|
+| Balcony          |     5628 |
+| Kitchen          |     5516 |
+| Bathroom         |     5320 |
+| LivingDiningRoom |     4631 |
+| MasterBedroom    |     4526 |
+| none             |     4302 |
+| SecondBedroom    |     3485 |
+| Bedroom          |     3323 |
+| LivingRoom       |     1848 |
+| Aisle            |     1747 |
+| Library          |     1531 |
+| MasterBathroom   |     1476 |
+| KidsRoom         |     1264 |
+| SecondBathroom   |     1159 |
+| Hallway          |     1012 |
+| OtherRoom        |      969 |
+| DiningRoom       |      864 |
+| Corridor         |      677 |
+| CloakRoom        |      647 |
+| EquipmentRoom    |      474 |
+| StorageRoom      |      324 |
+| ElderlyRoom      |      313 |
+| LaundryRoom      |      248 |
+| Terrace          |      140 |
+| Lounge           |      103 |
+| Stairwell        |       82 |
+| Courtyard        |       41 |
+| NannyRoom        |       33 |
+| Auditorium       |       10 |
+| non              |        8 |
+| Garage           |        4 |
+| OtherSpace       |        3 |
+All non-empty rooms
+| Type             |   #rooms |
+|------------------|----------|
+| LivingDiningRoom |     4260 |
+| MasterBedroom    |     4236 |
+| SecondBedroom    |     3126 |
+| Bedroom          |     2968 |
+| LivingRoom       |     1685 |
+| Library          |     1282 |
+| KidsRoom         |     1146 |
+| DiningRoom       |      762 |
+| ElderlyRoom      |      289 |
+| NannyRoom        |       21 |
+Number of rooms per scene
+|   #rooms |   #scenes |
+|----------|-----------|
+|        7 |      1076 |
+|        6 |       911 |
+|        8 |       881 |
+|        9 |       725 |
+|        5 |       603 |
+|       10 |       501 |
+|       11 |       371 |
+|        4 |       363 |
+|       12 |       266 |
+|        3 |       238 |
+|        1 |       226 |
+|        2 |       192 |
+|       13 |       150 |
+|       14 |        90 |
+|       15 |        79 |
+|       16 |        60 |
+|       17 |        21 |
+|       18 |        15 |
+|       20 |        12 |
+|       19 |         8 |
+|       23 |         5 |
+|       22 |         4 |
+|       21 |         4 |
+|       41 |         3 |
+|       37 |         2 |
+|       35 |         1 |
+|       26 |         1 |
+|       32 |         1 |
+|       33 |         1 |
+|       28 |         1 |
+|       27 |         1 |
+|       24 |         1 |
+51708
+2740

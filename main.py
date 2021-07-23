@@ -74,9 +74,9 @@ def scene_analysis(analyzer):
     headers = ["#rooms", "#scenes"]
     print(tabulate(entries, headers=headers, tablefmt="github"))
 
-    for k in range(1,6):
+    for k in range(1,20):
         with open('3d-front_{}.txt'.format(k), 'w') as f:
-            for item in uids[k]:
+            for item in sorted(uids[k]):
                 f.write("%s.json\n" % item)
 
 
